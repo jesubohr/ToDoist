@@ -10,6 +10,15 @@ function App() {
     setTasks([...tasks, task])
   }
 
+  function checkTask(id: number) {
+    setTasks(tasks.map(task => {
+      if(task.id === id) {
+        task.checked = !task.checked
+      }
+      return task
+    }))
+  }
+
   function updateTask(task: TaskProps) {
     setTasks(tasks.map(t => t.id === task.id ? task : t))
   }
@@ -28,6 +37,7 @@ function App() {
         tasks.length > 0 && (
           <TaskList
             tasks={tasks}
+            onCheck={checkTask}
             onUpdate={updateTask}
             onDelete={deleteTask}
           />

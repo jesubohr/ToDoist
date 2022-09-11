@@ -2,7 +2,7 @@ import type { TaskListProps } from "../types/Task";
 import { TaskItem } from "./TaskItem";
 import styles from '../styles/TaskList.module.css';
 
-export function TaskList({ tasks, onUpdate, onDelete }: TaskListProps) {
+export function TaskList({ tasks, onCheck, onUpdate, onDelete }: TaskListProps) {
   return (
     <ul className={styles.tasks}>
       {
@@ -12,6 +12,7 @@ export function TaskList({ tasks, onUpdate, onDelete }: TaskListProps) {
             <TaskItem
               key={task.id}
               task={task}
+              onCheck={onCheck}
               onUpdate={onUpdate}
               onDelete={onDelete}
             />

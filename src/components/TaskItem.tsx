@@ -3,8 +3,13 @@ import { useState } from "react";
 import { CheckIcon, PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 import styles from '../styles/TaskItem.module.css';
 
-export function TaskItem({ task, onDelete, onUpdate }: TaskItemProps) {
+export function TaskItem({ task, onCheck, onDelete, onUpdate }: TaskItemProps) {
   const [isChecked, setIsChecked] = useState(task.checked);
+
+  function toggleCheck() {
+    setIsChecked(!isChecked);
+    onCheck(task.id);
+  }
 
   function handleUpdate() {
     onUpdate({
@@ -22,7 +27,7 @@ export function TaskItem({ task, onDelete, onUpdate }: TaskItemProps) {
           name={task.name}
           className={styles.checkbox}
           checked={isChecked}
-          onChange={() => setIsChecked(!isChecked)}
+          onChange={toggleCheck}
         />
         <label
           htmlFor={task.id.toString()}

@@ -2,7 +2,7 @@ import type { TaskProps } from '../types/Task'
 import { useState } from 'react'
 import { PlusIcon } from '@heroicons/react/24/outline'
 
-export function TodoForm ({ addTask }: { addTask: (task: TaskProps) => void }) {
+export function CreateTaskForm ({ addTask }: { addTask: (task: TaskProps) => void }) {
   const [task, setTask] = useState("")
 
   function submitHandler(event: React.FormEvent) {

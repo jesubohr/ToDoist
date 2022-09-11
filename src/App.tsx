@@ -1,6 +1,6 @@
 import type { TaskProps } from './types/Task'
 import { useState } from 'react'
-import { TodoForm } from './components/TaskForm'
+import { CreateTaskForm } from './components/CreateTaskForm'
 import { TaskList } from './components/TaskList'
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
       <header>
         <h1>My Todo List</h1>
       </header>
-      <TodoForm addTask={addTask} />
+      <CreateTaskForm addTask={addTask} />
       {
         tasks.length > 0 && (
           <TaskList

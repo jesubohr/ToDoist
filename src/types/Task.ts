@@ -7,13 +7,18 @@ export type TaskProps = {
 export type TaskListProps = {
   tasks: TaskProps[]
   onCheck: (id: number) => void
-  onUpdate: (task: TaskProps) => void
+  onEdit: (task: TaskProps) => void
   onDelete: (id: number) => void
 }
 
 export type TaskItemProps = {
   task: TaskProps
   onCheck: (id: number) => void
-  onUpdate: (task: TaskProps) => void
+  onEdit: (task: TaskProps) => void
   onDelete: (id: number) => void
+}
+
+export type EditTaskProps = {
+  editTask: TaskProps | null,
+  onUpdate: (task: TaskProps) => void
 }

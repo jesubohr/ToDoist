@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "vite build && surge ./dist todoist-planner.surge.sh"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.10",

@@ -1,11 +1,12 @@
 import type { TaskProps } from './types/Task'
 import { useState } from 'react'
+import { useLocalStorage } from './hooks/useStorage'
 import { CreateTaskForm } from './components/CreateTaskForm'
 import { EditTaskForm } from './components/EditTaskForm'
 import { TaskList } from './components/TaskList'
 
 function App() {
-  const [tasks, setTasks] = useState<TaskProps[]>([])
+  const [tasks, setTasks] = useLocalStorage<TaskProps[]>('todoist.tasks', [])
   const [editTask, setEditTask] = useState<TaskProps | null>(null)
   const [isEditMode, setIsEditMode] = useState(false)
   const [prevFocusElement, setPrevFocusElement] = useState<HTMLElement | null>(null)

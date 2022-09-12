@@ -105,7 +105,7 @@ body {
   min-height: 100vh;
   display: grid;
   justify-items: center;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, Inter, "Segoe UI", Roboto,
+  font-family: 'Albert Sans', system-ui, -apple-system, BlinkMacSystemFont, Inter, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background-color: hsl(var(--bg));
   color: hsl(var(--txt));

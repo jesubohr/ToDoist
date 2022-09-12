@@ -75,6 +75,7 @@
 
 .checkbox:checked+label {
   text-decoration: line-through;
+  opacity: .7;
 }
 
 .delete {
@@ -89,7 +90,6 @@
 }
 
 @keyframes pulse {
-
   0%,
   100% {
     opacity: 1;

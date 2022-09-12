@@ -27,7 +27,7 @@ export function CreateTaskForm ({ addTask }: { addTask: (task: TaskProps) => voi
           onInput={(ev: React.FormEvent) => setTask((ev.target as HTMLInputElement).value)}
           required
           autoFocus
-          maxLength={60}
+          maxLength={100}
           placeholder="Enter a Task"
         />
         <label htmlFor="task" className="label">Enter a Task</label>

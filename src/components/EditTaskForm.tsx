@@ -39,7 +39,7 @@ export function EditTaskForm({ editTask, onUpdate, onEscape }: EditTaskProps) {
             onInput={(ev: React.FormEvent) => setUpdatedTaskName((ev.target as HTMLInputElement).value)}
             required
             autoFocus
-            maxLength={60}
+            maxLength={100}
             placeholder="Update Task"
           />
           <label htmlFor="editTask" className="label">Update Task</label>

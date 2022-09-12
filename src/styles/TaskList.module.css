@@ -1,5 +1,6 @@
 .tasks {
   display: grid;
   gap: 1.5em;
+  max-width: 65ch;
   list-style: none;
 }

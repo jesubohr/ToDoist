@@ -8,6 +8,7 @@ export function TaskList({ tasks, onCheck, onEdit, onDelete }: TaskListProps) {
       {
         tasks
           .sort((first, second) => second.id - first.id)
+          .sort((first, second) => Number(first.checked) - Number(second.checked))
           .map(task => (
             <TaskItem
               key={task.id}

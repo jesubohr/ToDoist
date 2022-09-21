@@ -2,6 +2,7 @@ import type { TaskProps } from './types/Task'
 import { useState } from 'react'
 import { useLocalStorage } from './hooks/useStorage'
 import { CreateTaskForm } from './components/CreateTaskForm'
+import { ThemeSwitcher } from './components/ThemeSwitcher'
 import { EditTaskForm } from './components/EditTaskForm'
 import { TaskList } from './components/TaskList'
 
@@ -75,6 +76,7 @@ function App() {
           />
         )
       }
+      <ThemeSwitcher />
     </div>
   )
 }

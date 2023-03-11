@@ -4,6 +4,7 @@ import { useLocalStorage } from './hooks/useLocalStorage'
 import { CreateTaskForm } from './components/CreateTaskForm'
 import { ThemeSwitcher } from './components/ThemeSwitcher'
 import { EditTaskForm } from './components/EditTaskForm'
+import { ReloadPrompt } from './components/ReloadPrompt'
 import { TaskList } from './components/TaskList'
 
 function App() {
@@ -79,6 +80,7 @@ function App() {
         />
       )}
       <ThemeSwitcher />
+      <ReloadPrompt />
     </div>
   )
 }

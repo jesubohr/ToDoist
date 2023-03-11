@@ -11,6 +11,7 @@ specifiers:
   typescript: 4.9.3
   vite: 4.1.0
   vite-plugin-pwa: 0.14.4
+  workbox-window: 6.5.4
 
 dependencies:
   '@heroicons/react': 2.0.10_react@18.2.0
@@ -25,6 +26,7 @@ devDependencies:
   typescript: 4.9.3
   vite: 4.1.0
   vite-plugin-pwa: 0.14.4_57fbmaryt4hqiz7gqil7yz2imi
+  workbox-window: 6.5.4
 
 packages:
 

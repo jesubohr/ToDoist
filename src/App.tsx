@@ -1,6 +1,6 @@
 import type { TaskProps } from './types/Task'
 import { useState } from 'react'
-import { useLocalStorage } from './hooks/useStorage'
+import { useLocalStorage } from './hooks/useLocalStorage'
 import { CreateTaskForm } from './components/CreateTaskForm'
 import { ThemeSwitcher } from './components/ThemeSwitcher'
 import { EditTaskForm } from './components/EditTaskForm'
@@ -10,19 +10,23 @@ function App() {
   const [tasks, setTasks] = useLocalStorage<TaskProps[]>('todoist.tasks', [])
   const [editTask, setEditTask] = useState<TaskProps | null>(null)
   const [isEditMode, setIsEditMode] = useState(false)
-  const [prevFocusElement, setPrevFocusElement] = useState<HTMLElement | null>(null)
+  const [prevFocusElement, setPrevFocusElement] = useState<HTMLElement | null>(
+    null
+  )
 
   function addTask(task: TaskProps) {
     setTasks([...tasks, task])
   }
 
   function checkTask(id: number) {
-    setTasks(tasks.map(task => {
-      if(task.id === id) {
-        task.checked = !task.checked
-      }
-      return task
-    }))
+    setTasks(
+      tasks.map(task => {
+        if (task.id === id) {
+          task.checked = !task.checked
+        }
+        return task
+      })
+    )
   }
 
   function editMode(task: TaskProps) {
@@ -31,19 +35,21 @@ function App() {
     setPrevFocusElement(document.activeElement as HTMLElement)
   }
 
-  function closeEditMode () {
+  function closeEditMode() {
     setIsEditMode(false)
     setEditTask(null)
     prevFocusElement?.focus()
   }
 
   function updateTask(task: TaskProps) {
-    setTasks(tasks.map(t => {
-      if(t.id === task.id) {
-        t.name = task.name
-      }
-      return t
-    }))
+    setTasks(
+      tasks.map(t => {
+        if (t.id === task.id) {
+          t.name = task.name
+        }
+        return t
+      })
+    )
     closeEditMode()
   }
 
@@ -52,30 +58,26 @@ function App() {
   }
 
   return (
-    <div className="container">
+    <div className='container'>
       <header>
         <h1>My Todo List</h1>
       </header>
-      {
-        isEditMode && (
-          <EditTaskForm
-            editTask={editTask}
-            onUpdate={updateTask}
-            onEscape={closeEditMode}
-          />
-        )
-      }
+      {isEditMode && (
+        <EditTaskForm
+          editTask={editTask}
+          onUpdate={updateTask}
+          onEscape={closeEditMode}
+        />
+      )}
       <CreateTaskForm addTask={addTask} />
-      {
-        tasks.length > 0 && (
-          <TaskList
-            tasks={tasks}
-            onCheck={checkTask}
-            onEdit={editMode}
-            onDelete={deleteTask}
-          />
-        )
-      }
+      {tasks.length > 0 && (
+        <TaskList
+          tasks={tasks}
+          onCheck={checkTask}
+          onEdit={editMode}
+          onDelete={deleteTask}
+        />
+      )}
       <ThemeSwitcher />
     </div>
   )

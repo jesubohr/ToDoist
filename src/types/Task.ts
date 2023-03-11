@@ -19,7 +19,7 @@ export type TaskItemProps = {
 }
 
 export type EditTaskProps = {
-  editTask: TaskProps | null,
+  editTask: TaskProps | null
   onUpdate: (task: TaskProps) => void
   onEscape: () => void
 }

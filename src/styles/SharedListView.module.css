@@ -1,0 +1,75 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 65ch;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.stats {
+  font-size: 0.9rem;
+  color: hsl(var(--txt) / 0.5);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.home-btn,
+.save-btn,
+.saved-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: var(--_radius);
+  border: 0.15em solid hsl(var(--accent));
+  background-color: hsl(var(--bg));
+  color: hsl(var(--accent));
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.home-btn:hover,
+.save-btn:hover {
+  background-color: hsl(var(--accent));
+  color: hsl(var(--bg));
+}
+
+.saved-btn {
+  background-color: hsl(var(--accent) / 0.2);
+  color: hsl(var(--accent));
+  cursor: default;
+  opacity: 0.7;
+}
+
+.task-list {
+  font-size: var(--_size);
+  line-height: 1.8;
+  text-align: left;
+  padding: 0 0.5rem;
+}
+
+.task {
+  color: hsl(var(--txt));
+}
+
+.task-done {
+  text-decoration: line-through;
+  color: hsl(var(--txt) / 0.5);
+}

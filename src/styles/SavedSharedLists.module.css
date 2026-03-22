@@ -1,0 +1,91 @@
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown-menu {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0.5rem;
+  min-width: 200px;
+  max-width: 280px;
+  background-color: hsl(var(--bg));
+  border: 0.15em solid hsl(var(--accent) / 0.3);
+  border-radius: var(--_radius);
+  box-shadow: 0 0.5em 1em hsl(var(--muted) / 0.3);
+  z-index: 100;
+  overflow: hidden;
+}
+
+.header {
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: hsl(var(--txt) / 0.7);
+  border-bottom: 0.1em solid hsl(var(--accent) / 0.2);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.item-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  padding: 0.6rem 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.item-btn:hover {
+  background-color: hsl(var(--accent) / 0.1);
+}
+
+.item-name {
+  font-size: 0.9rem;
+  color: hsl(var(--txt));
+}
+
+.item-count {
+  font-size: 0.75rem;
+  color: hsl(var(--txt) / 0.5);
+}
+
+.item-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: hsl(var(--txt) / 0.5);
+  transition: color 0.2s;
+}
+
+.item-delete:hover {
+  color: hsl(var(--accent1));
+}

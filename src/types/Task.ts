@@ -23,3 +23,9 @@ export type EditTaskProps = {
   onUpdate: (task: TaskProps) => void
   onEscape: () => void
 }
+
+export type SharedListInfo = {
+  id: string
+  tasks: TaskProps[]
+  savedAt: number
+}

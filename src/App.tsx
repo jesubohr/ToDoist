@@ -1,11 +1,16 @@
-import type { TaskProps } from './types/Task'
-import { useState } from 'react'
+import type { TaskProps, SharedListInfo } from './types/Task'
+import { useState, useEffect, useCallback } from 'react'
 import { useLocalStorage } from './hooks/useLocalStorage'
+import { useSharedLists } from './hooks/useSharedLists'
 import { CreateTaskForm } from './components/CreateTaskForm'
 import { ThemeSwitcher } from './components/ThemeSwitcher'
 import { EditTaskForm } from './components/EditTaskForm'
 import { ReloadPrompt } from './components/ReloadPrompt'
 import { TaskList } from './components/TaskList'
+import { SharedListView } from './components/SharedListView'
+import { ShareButton } from './components/ShareButton'
+import { SavedSharedLists } from './components/SavedSharedLists'
+import { parseSharedHash, decodeTasks, encodeTasks } from './utils/shareUtils'
 
 function App() {
   const [tasks, setTasks] = useLocalStorage<TaskProps[]>('todoist.tasks', [])
@@ -14,6 +19,34 @@ function App() {
   const [prevFocusElement, setPrevFocusElement] = useState<HTMLElement | null>(
     null
   )
+  const [sharedTasks, setSharedTasks] = useState<TaskProps[] | null>(null)
+  const [sharedHash, setSharedHash] = useState<string | null>(null)
+
+  const { savedLists, addSavedList, removeSavedList, isListSaved } =
+    useSharedLists()
+
+  useEffect(() => {
+    const encoded = parseSharedHash()
+    if (encoded) {
+      const decoded = decodeTasks(encoded)
+      if (decoded) {
+        setSharedTasks(decoded)
+        setSharedHash(encoded)
+      }
+    }
+  }, [])
+
+  const goHome = useCallback(() => {
+    setSharedTasks(null)
+    setSharedHash(null)
+    window.location.hash = ''
+  }, [])
+
+  const handleOpenSavedList = useCallback((list: SharedListInfo) => {
+    setSharedTasks(list.tasks)
+    setSharedHash(encodeTasks(list.tasks))
+    window.location.hash = `shared=${encodeTasks(list.tasks)}`
+  }, [])
 
   function addTask(task: TaskProps) {
     setTasks([...tasks, task])
@@ -58,6 +91,31 @@ function App() {
     setTasks(tasks.filter(t => t.id !== id))
   }
 
+  function handleShare() {
+    // URL is not modified on sharer's side
+  }
+
+  if (sharedTasks) {
+    return (
+      <div className='container'>
+        <SharedListView
+          tasks={sharedTasks}
+          isSaved={isListSaved(sharedTasks)}
+          onGoHome={goHome}
+          onSave={() => addSavedList(sharedTasks)}
+        />
+        <ThemeSwitcher>
+          <SavedSharedLists
+            savedLists={savedLists}
+            onOpenList={handleOpenSavedList}
+            onRemoveList={removeSavedList}
+          />
+        </ThemeSwitcher>
+        <ReloadPrompt />
+      </div>
+    )
+  }
+
   return (
     <div className='container'>
       <header>
@@ -79,7 +137,14 @@ function App() {
           onDelete={deleteTask}
         />
       )}
-      <ThemeSwitcher />
+      <ThemeSwitcher>
+        <ShareButton tasks={tasks} onShare={handleShare} />
+        <SavedSharedLists
+          savedLists={savedLists}
+          onOpenList={handleOpenSavedList}
+          onRemoveList={removeSavedList}
+        />
+      </ThemeSwitcher>
       <ReloadPrompt />
     </div>
   )

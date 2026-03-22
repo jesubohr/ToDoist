@@ -8,7 +8,7 @@ import {
 import { useLocalStorage } from '../hooks/useLocalStorage'
 import styles from '../styles/ThemeSwitcher.module.css'
 
-export function ThemeSwitcher() {
+export function ThemeSwitcher({ children }: { children?: React.ReactNode }) {
   const defaultTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
     ? 'dark'
     : 'light'
@@ -71,6 +71,7 @@ export function ThemeSwitcher() {
         </>
       ) : (
         <div className={styles.btns}>
+          {children}
           <button
             className='btn'
             role='switch'

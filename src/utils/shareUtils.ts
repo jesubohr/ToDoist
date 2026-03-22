@@ -41,7 +41,7 @@ export async function shareViaWebApi(
   url: string,
   title: string = 'Shared Todo List'
 ): Promise<boolean> {
-  if (navigator.share && navigator.canShare) {
+  if (navigator.share && navigator.canShare({ title, url })) {
     try {
       await navigator.share({
         title,

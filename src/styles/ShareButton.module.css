@@ -1,0 +1,20 @@
+.share-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.share-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.share-text {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  .share-text {
+    display: none;
+  }
+}
